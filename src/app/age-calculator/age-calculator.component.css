@@ -2,24 +2,6 @@
 /*  */
 /*  */
 
-.center-shadow-box { 
-    text-align: center; 
-    padding-top: .5rem;
-    padding-bottom: 3rem;
-    margin: 0px 300px; 
-
-    z-index: 991;
-    line-height: normal;
-
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2.5px 10px rgba(0,0,0,.2);
-
-    border-radius: 7.5px;
-
-    margin-top: 10px;
-}
-
 .age-error {
     background-color: red; 
     padding: .5rem; 
