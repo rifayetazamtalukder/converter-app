@@ -9,6 +9,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 
 import { MaterialModule } from "./modules/material/material.module";
 import { AgeCalculatorComponent } from './age-calculator/age-calculator.component';
@@ -43,7 +45,9 @@ import { TimeComponent } from './time/time.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

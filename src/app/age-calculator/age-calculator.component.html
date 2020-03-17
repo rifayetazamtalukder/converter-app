@@ -1,1 +1,64 @@
-<p>age-calculator works!</p>
+<!--  -->
+<!--  -->
+<!--  -->
+
+
+<div class="center-shadow-box">
+    <h1>
+        Age Calculator
+    </h1>
+
+
+    Form: {{ age_form.value | json }}
+    <br>
+    Status{{ age_form.status | json }}
+
+    <form [formGroup]="age_form" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="fill">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="birth_date" placeholder="mm-dd-yyyy" required formControlName="birth_date">
+
+            <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
+
+            <mat-datepicker #birth_date></mat-datepicker>
+        </mat-form-field>
+        <!--  -->
+        <span class="ml-16"></span>
+        <!--  -->
+        <mat-form-field appearance="fill">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="current_date" placeholder="mm-dd-yyyy" formControlName="current_date">
+
+            <mat-hint>
+                <strong>
+                    Change Current Date Value To Calculate Custom Age
+                </strong>
+            </mat-hint>
+
+            <mat-datepicker-toggle matSuffix [for]="current_date"></mat-datepicker-toggle>
+
+            <mat-datepicker #current_date></mat-datepicker>
+        </mat-form-field>
+
+        <!--  -->
+        <br><br><br>
+        <!--  -->
+        <button [disabled]="age_form.invalid" type="submit" mat-raised-button color="primary">Calculate</button>
+    </form>
+
+    <br><br>
+    <div *ngIf="show_age">
+        <div *ngIf="!date_error; else date_error_found" class="age-success">
+            <h2 class="font-success">
+                <pre> You are: {{ year }} years {{ month }} months and {{ day }} days old</pre>
+            </h2>
+            <!--  -->
+            <!-- <button (click)="show_details = !show_details" mat-raised-button color="accent">See Details</button> -->
+        </div>
+
+        <ng-template #date_error_found>
+            <pre class="age-error">From Date Must Be Smaller Than To Date</pre>
+        </ng-template>
+    </div>
+</div>

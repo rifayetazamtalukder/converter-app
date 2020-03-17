@@ -4,25 +4,24 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-.container{
-    display: flex;
-
-    margin: 1rem;
-
-    padding: 0 1rem;
-
-    flex-wrap: wrap;
-}
-
-.flex-direction-column{
-    flex-direction: column;
-}
-
 .big-font {
     font-size: 3rem;
 }
 
-.text-center {
-    text-align: center;
+.ml-10 {
+    margin-left: 10px;
 }
+
+.ml-12 {
+    margin-left: 12px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
 
