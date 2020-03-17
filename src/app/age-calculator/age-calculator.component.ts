@@ -23,7 +23,12 @@ export class AgeCalculatorComponent implements OnInit {
 
   public age_format: string = '';
 
-  constructor(private form_builder: FormBuilder) { }
+  constructor(private form_builder: FormBuilder) {
+    // 
+    this.age_form.valueChanges.subscribe(x => {
+      this.show_age = false;
+    });
+  }
 
   age_form = this.form_builder.group({
     "birth_date": ['', Validators.required],
