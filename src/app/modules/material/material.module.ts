@@ -21,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { MatSelectModule } from "@angular/material/select";
 
 
 const MaterialComponents = [
@@ -34,6 +35,7 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatSelectModule
 ];
 
 @NgModule({

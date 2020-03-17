@@ -1,1 +1,109 @@
-<p>temperature works!</p>
+<!--  -->
+<!--  -->
+<!--  -->
+
+<div class="center-shadow-box">
+    <h1>
+        Temperature Converter
+    </h1>
+    <mat-divider></mat-divider>
+    <br><br>
+
+    <!-- Form Field -->
+    <form [formGroup]="temperature_form" (ngSubmit)="onSubmit()">
+        <!-- From Unit -->
+        <mat-form-field appearance="outline">
+            <mat-label>From Unit</mat-label>
+            <!--  -->
+            <!--  -->
+            <mat-select formControlName="unit_from" required [(value)]="selected_from">
+                <mat-option>Select a Unit</mat-option>
+                <mat-divider></mat-divider>
+                <!--  -->
+                <mat-option *ngFor="let temp_unit of temperature_units" [value]="temp_unit.value">
+                    {{ temp_unit.name }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>
+                Select a Temperature Unit
+            </mat-hint>
+
+            <!-- Error Validation -->
+            <mat-error *ngIf="unit_from.hasError('required')">
+                This Value is <strong>required</strong>
+            </mat-error>
+
+        </mat-form-field>
+
+        <!-- {{ unit_from.status | json }} -->
+
+        <!--  -->
+        <!--  -->
+        <span class="ml-10"></span>
+        <!--  -->
+        <!--  -->
+
+        <!-- To Unit -->
+        <mat-form-field appearance="outline">
+            <mat-label>To Unit</mat-label>
+            <!--  -->
+            <!--  -->
+            <mat-select formControlName="unit_to" required [(value)]="selected_to">
+                <mat-option>Select a Unit</mat-option>
+                <mat-divider></mat-divider>
+                <!--  -->
+                <mat-option *ngFor="let temp_unit_to of temperature_units" [value]="temp_unit_to.value">
+                    {{ temp_unit_to.name }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>
+                Select a Temperature Unit
+            </mat-hint>
+
+            <!-- Error Validation -->
+            <mat-error *ngIf="unit_to.hasError('required')">
+                This Value is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <br><br>
+        <!-- From Value -->
+        <mat-form-field appearance="outline">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" required formControlName="temp_value" />
+            <!--  -->
+            <mat-hint>Enter a Numeric Value</mat-hint>
+            <!--  -->
+            <mat-error *ngIf="temp_value.hasError('required')">
+                This Value is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--  -->
+        <!--  -->
+        <br><br>
+        <button mat-raised-button type="submit" color="primary">Convert</button>
+    </form>
+
+    <br>
+    <div *ngIf="show_result">
+        <h1>
+            <span *ngIf="selected_from != 'kelvin'; else from_kelvin">
+                Result: {{ temp_value.value }}&deg;
+            </span>
+            <ng-template #from_kelvin>
+                Result: {{ temp_value.value }}
+            </ng-template>
+            <span>{{ selected_from.charAt(0).toUpperCase() }}</span>
+            <span *ngIf="selected_to != 'kelvin'; else to_kelvin">
+                = {{ result.toFixed(2) }}&deg;
+            </span>
+            <ng-template #to_kelvin>
+                = {{ result.toFixed(2) }}
+            </ng-template>
+            <span>
+                {{ selected_to.charAt(0).toUpperCase() }}
+            </span>
+        </h1>
+    </div>
+</div>
