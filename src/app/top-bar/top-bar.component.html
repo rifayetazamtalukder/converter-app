@@ -1,1 +1,83 @@
-<p>top-bar works!</p>
+<!--  -->
+<!--  -->
+<!--  -->
+
+<mat-toolbar color="primary">
+    <span>App Name Here</span>
+
+    <!-- This span class will right align other options -->
+    <span class="right-align"></span>
+
+    <span>
+        <button mat-flat-button>
+            Age Calculator
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Temperature
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Length
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Area
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Volume
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Weight
+        </button>
+    </span>
+    <span class="ml-2">
+        <button mat-flat-button>
+            Time
+        </button>
+    </span>
+
+    <!-- This should be at the end -->
+    <button mat-icon-button [matMenuTriggerFor]="top_right_side_menu" aria-label="top Right Side Dotted Menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+
+<!-- Material Menu -->
+<mat-menu #top_right_side_menu="matMenu">
+    <button mat-menu-item color="primary">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+    </button>
+    <!--  -->
+    <mat-divider></mat-divider>
+    <!--  -->
+    <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Menu Option 1</span>
+    </button>
+    <!--  -->
+    <mat-divider></mat-divider>
+    <!--  -->
+    <button mat-menu-item>
+        <mat-icon>voicemail</mat-icon>
+        <span>Menu Option 2</span>
+    </button>
+    <!--  -->
+    <mat-divider></mat-divider>
+    <!--  -->
+    <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Menu Option 3</span>
+    </button>
+</mat-menu>
+<!-- End of Material Menu -->
