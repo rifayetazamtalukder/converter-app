@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators } from "@angular/forms";
+import { formattedError } from '@angular/compiler';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class AgeCalculatorComponent implements OnInit {
 
   public show_age: boolean = false;
   public show_details: boolean = false;
+
+  public age_format: string = '';
 
   constructor(private form_builder: FormBuilder) { }
 
@@ -83,15 +86,28 @@ export class AgeCalculatorComponent implements OnInit {
     // This line must be after if else condition
     this.show_age = true;
 
+    this.formatAge(this.day, this.month, this.year);
+
     if (this.show_details) {
       // this.onSeeDetailsClick(this.day, this.month, this.year);
     }
   }
 
-  onSeeDetailsClick(day, month, year) {
-    // total_days = day + () 
-    // total_month = 
-    // total_year = 
+  formatAge(day, month, year) {
+    let _days = 'day';
+    let _months = 'month';
+    let _years = 'year';
+    if (day > 1) {
+      _days = 'days';
+    }
+    if (month > 1) {
+      _months = 'months';
+    }
+    if (year > 1) {
+      _years = 'years';
+    }
+
+    this.age_format = `You are: ${year} ${_years}, ${month} ${_months} and ${day} ${_days} old`;
   }
 
 }

@@ -8,11 +8,6 @@
         Age Calculator
     </h1>
 
-
-    Form: {{ age_form.value | json }}
-    <br>
-    Status{{ age_form.status | json }}
-
     <form [formGroup]="age_form" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
@@ -51,7 +46,9 @@
     <div *ngIf="show_age">
         <div *ngIf="!date_error; else date_error_found" class="age-success">
             <h2 class="font-success">
-                <pre> You are: {{ year }} years {{ month }} months and {{ day }} days old</pre>
+                <pre> {{ age_format }} </pre>
+
+                <pre>You are: <strong>{{ day }}</strong>days</pre>
             </h2>
             <!--  -->
             <!-- <button (click)="show_details = !show_details" mat-raised-button color="accent">See Details</button> -->
