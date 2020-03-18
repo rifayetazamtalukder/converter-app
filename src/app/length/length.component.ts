@@ -31,10 +31,43 @@ export class LengthComponent implements OnInit {
       // alert(`From: ${this.from.value}, To: ${this.to.value}, Value: ${this.value.value}`);
 
       let _from = this.from.value;
+      let _from_for_all = 'kilometre'; // _from_for_all will help to convert from kilometre to other
       let _to = this.to.value;
       let _value = this.value.value;
 
-      this.result = this.convertFromKilometre_toOther(_from, _to, _value);
+      if (_from === 'kilometre') {
+        this.result = this.convertFromKilometre_toOther(_from, _to, _value);
+      }
+      else if (_from === 'metre') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 1000;
+      }
+      else if (_from === 'centimetre') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 100000;
+      }
+      else if (_from === 'millimetre') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 1000000;
+      }
+      else if (_from === 'micrometre') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 1000000000;
+      }
+      else if (_from === 'nanometre') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 1000000000000;
+      }
+      else if (_from === 'mile') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 0.62137119223;
+      }
+      else if (_from === 'yard') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 1093.6132983377;
+      }
+      else if (_from === 'foot') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 3280.83989501;
+      }
+      else if (_from === 'inch') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 39370.078740157;
+      }
+      else if (_from === 'nautical_mile') {
+        this.result = this.convertFromKilometre_toOther(_from_for_all, _to, _value) / 0.539957;
+      }
 
       // alert(`Result: ${this.result}`);
 

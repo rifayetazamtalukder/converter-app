@@ -72,8 +72,24 @@
     <br>
     <div *ngIf="show_result" class="word-wrap px-10">
         <h1>
-            Result: {{ value.value }} {{ selected_from }} = {{ result.toLocaleString() }}
-            {{ selected_to }}
+            <!--  -->
+            <span>
+                Result: {{ value.value }} {{ selected_from }} =
+            </span>
+            <!--  -->
+            <!-- If LocalString Does not gives result 0 then show result as localString -->
+            <span *ngIf="result.toLocaleString() != '0'; else showFullResult;">
+                {{ result.toLocaleString() }}
+            </span>
+            <!--  -->
+            <!-- If LocalString gives result 0 then show the actual result-->
+            <ng-template #showFullResult>
+                {{ result }}
+            </ng-template>
+            <!--  -->
+            <span>
+                {{ selected_to }}
+            </span>
         </h1>
     </div>
 </div>
