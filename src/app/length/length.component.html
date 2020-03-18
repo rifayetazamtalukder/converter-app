@@ -1,1 +1,79 @@
-<p>length works!</p>
+<!--  -->
+<!--  -->
+<!--  -->
+
+<div class="center-shadow-box">
+    <h1>
+        Length Converter
+    </h1>
+    <mat-divider></mat-divider>
+    <!--  -->
+    <br><br>
+    <!-- Form Field -->
+    <form [formGroup]="length_form" (ngSubmit)="onSubmit()">
+        <!-- From Field -->
+        <mat-form-field appearance="outline">
+            <mat-label>From</mat-label>
+            <mat-select formControlName="from" [(value)]="selected_from" required>
+                <mat-option>Select a value</mat-option>
+                <mat-divider></mat-divider>
+
+                <mat-option *ngFor="let length of lengths" [value]="length.value">
+                    {{ length.name }}
+                </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="from.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <!--  -->
+        <span class="ml-10"></span>
+        <!--  -->
+        <!-- To Field -->
+        <mat-form-field appearance="outline">
+            <mat-label>To</mat-label>
+            <mat-select formControlName="to" [(value)]="selected_to" required>
+                <mat-option>Select a value</mat-option>
+                <mat-divider></mat-divider>
+
+                <mat-option *ngFor="let length_to of lengths" [value]="length_to.value">
+                    {{ length_to.name }}
+                </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="to.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <!--  -->
+        <!--  -->
+        <br><br>
+        <!--  -->
+        <!--  -->
+        <!-- Value Field -->
+        <mat-form-field appearance="fill">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" autocomplete="off" formControlName="value" required
+                placeholder="Enter a numeric value">
+            <mat-hint>Enter a numeric value</mat-hint>
+
+            <mat-error *ngIf="value.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <!--  -->
+        <!--  -->
+        <br><br>
+        <button mat-raised-button type="submit" color="primary">Convert</button>
+    </form>
+
+    <br>
+    <div *ngIf="show_result" class="word-wrap px-10">
+        <h1>
+            Result: {{ value.value }} {{ selected_from }} = {{ result.toLocaleString() }}
+            {{ selected_to }}
+        </h1>
+    </div>
+</div>
