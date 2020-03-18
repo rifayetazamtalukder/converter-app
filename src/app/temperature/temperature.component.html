@@ -68,7 +68,7 @@
 
         <br><br>
         <!-- From Value -->
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
             <mat-label>Value</mat-label>
             <input matInput type="number" required formControlName="temp_value" />
             <!--  -->
@@ -86,20 +86,20 @@
     </form>
 
     <br>
-    <div *ngIf="show_result">
+    <div *ngIf="show_result" class="word-wrap px-10">
         <h1>
             <span *ngIf="selected_from != 'kelvin'; else from_kelvin">
                 Result: {{ temp_value.value }}&deg;
             </span>
             <ng-template #from_kelvin>
-                Result: {{ temp_value.value }}
+                Result: {{ temp_value.value.toLocaleString() }}
             </ng-template>
             <span>{{ selected_from.charAt(0).toUpperCase() }}</span>
             <span *ngIf="selected_to != 'kelvin'; else to_kelvin">
-                = {{ result.toFixed(2) }}&deg;
+                = {{ result.toLocaleString() }}&deg;
             </span>
             <ng-template #to_kelvin>
-                = {{ result.toFixed(2) }}
+                = {{ result.toLocaleString() }}
             </ng-template>
             <span>
                 {{ selected_to.charAt(0).toUpperCase() }}
