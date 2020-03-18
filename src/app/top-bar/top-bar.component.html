@@ -6,7 +6,7 @@
     <!--  -->
     <!-- Logo Icon preference: layers, developer_board -->
     <!--  -->
-    <mat-icon class="logo-icon">developer_board</mat-icon>
+    <mat-icon class="logo-icon" matTooltip="Application Logo">developer_board</mat-icon>
 
     <button class="logo" mat-button routerLink="/">Converter</button>
 
@@ -14,43 +14,44 @@
     <span class="right-align"></span>
 
     <span>
-        <button mat-flat-button routerLink="/age">
+        <button mat-flat-button matTooltip="Calculates Age" routerLink="/age">
             Calculate Age
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/temperature">
+        <button mat-flat-button matTooltip="Converts Temperature" routerLink="/temperature">
             Temperature
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/length">
+        <button mat-flat-button matTooltip="Converts Length" routerLink="/length">
             Length
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/area">
+        <button mat-flat-button matTooltip="Converts Area" routerLink="/area">
             Area
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/volume">
+        <button mat-flat-button matTooltip="Converts Volume" routerLink="/volume">
             Volume
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/weight">
+        <button mat-flat-button matTooltip="Converts Weight" routerLink="/weight">
             Weight
         </button>
     </span>
     <span class="ml-12">
-        <button mat-flat-button routerLink="/time">
+        <button mat-flat-button matTooltip="Converts Time" routerLink="/time">
             Time
         </button>
     </span>
 
     <!-- This should be at the end -->
-    <button mat-icon-button [matMenuTriggerFor]="top_right_side_menu" aria-label="top Right Side Dotted Menu">
+    <button mat-icon-button matTooltip="Click To See Different Options" [matMenuTriggerFor]="top_right_side_menu"
+        aria-label="top Right Side Dotted Menu">
         <mat-icon>more_vert</mat-icon>
     </button>
 </mat-toolbar>
