@@ -39,6 +39,32 @@
             <mat-datepicker #current_date></mat-datepicker>
         </mat-form-field>
 
+        <br><br>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <mat-form-field appearance="fill">
+            <mat-label>Custom DatePicker</mat-label>
+            <input matInput [matDatepicker]="dp" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+
+            <mat-hint>Enter a valid date. Ex: March 20, 2020</mat-hint>
+
+            <!-- Mat Errors For Date -->
+            <mat-error *ngIf="date.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="date.hasError('matDatepickerParse')">
+                Please Enter a Valid Date. <strong>Ex: March 20, 2020</strong>
+            </mat-error>
+
+        </mat-form-field>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+
         <!--  -->
         <br><br><br>
         <!--  -->
