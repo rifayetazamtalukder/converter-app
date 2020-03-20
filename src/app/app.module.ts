@@ -24,6 +24,9 @@ import { WeightComponent } from './weight/weight.component';
 import { TimeComponent } from './time/time.component';
 
 
+import { HttpClientModule } from "@angular/common/http"; // for offline material icon
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,8 @@ import { TimeComponent } from './time/time.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

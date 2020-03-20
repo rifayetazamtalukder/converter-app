@@ -17,9 +17,15 @@
 }
 
 .logo-icon {
-    font-size: 40px !important; 
-    margin-right: 2px; 
+    font-size: 40px !important;
+    margin-right: 2px;
     margin-top: -15px;
+}
+
+.svg-logo-icon {
+    width: 24px;
+    height: 24px;
+    transform: scale(2); /* Here scale(2) means 200% of the given height and width ratio */
 }
 
 .logo-icon:hover{
