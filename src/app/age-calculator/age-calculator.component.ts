@@ -61,15 +61,19 @@ export class AgeCalculatorComponent implements OnInit {
 
 
     let _current_date_day = _current_date.getDate();
-    let _current_date_month = _current_date.getMonth() + 1;
+    let _current_date_month = _current_date.getMonth();
     let _current_date_year = _current_date.getFullYear();
+
+    console.log(`0. [Current Date] ${_current_date_year} Year -- ${_current_date_month} Month -- ${_current_date_day} Day`);
+
 
     let _birth_date = this.birth_date.value;
     let _birth_date_day = _birth_date.getDate();
-    let _birth_date_month = _birth_date.getMonth() + 1;
+    let _birth_date_month = _birth_date.getMonth();
     let _birth_date_year = _birth_date.getFullYear();
 
-    //  && _current_date_month >= _birth_date_month && _current_date_day >= _birth_date_day
+    // Check if the current date is greater than or equal to from date,
+    // if current date is less than from date then show error
     if (
       _current_date_year > _birth_date_year ||
       (
@@ -81,10 +85,31 @@ export class AgeCalculatorComponent implements OnInit {
       // 
       this.date_error = false;
       // 
-      this.day = Math.abs(_current_date_day - _birth_date_day);
-      this.month = Math.abs(_current_date_month - _birth_date_month);
-      this.year = Math.abs(_current_date_year - _birth_date_year);
-    } else {
+      this.day = _current_date_day - _birth_date_day;
+      this.month = _current_date_month - _birth_date_month;
+      this.year = _current_date_year - _birth_date_year;
+
+      console.log(`1. ${this.year} Year -- ${this.month} Month -- ${this.day} Day`);
+
+      // Check if the month is less than equal 0 or not; If so decrease year by one
+      if (this.month <= 0) {
+        this.year--;
+        this.month = 12 + this.month;
+        console.log(`2. [month<0] ${this.year} Year -- ${this.month} Month -- ${this.day} Day`);
+      }
+      if (this.day <= 0) {
+        this.month--;
+        this.day = 30 + this.day;
+        console.log(`3. [cur_day < dob_day] ${this.year} Year -- ${this.month} Month -- ${this.day} Day`);
+      }
+      if (this.month === 12) {
+        this.year++;
+        this.month = 0;
+        console.log(`4. [month == 12] ${this.year} Year -- ${this.month} Month -- ${this.day} Day`);
+      }
+
+    }
+    else {
       this.date_error = true;
     }
 
@@ -92,6 +117,8 @@ export class AgeCalculatorComponent implements OnInit {
     this.show_age = true;
 
     this.formatAge(this.day, this.month, this.year);
+
+    console.log(`6. Final Age: ${this.year} Year -- ${this.month} Month -- ${this.day} Day`);
 
     if (this.show_details) {
       // this.onSeeDetailsClick(this.day, this.month, this.year);
