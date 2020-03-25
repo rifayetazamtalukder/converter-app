@@ -23,19 +23,37 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatSelectModule } from "@angular/material/select";
 
+import { MatListModule } from "@angular/material/list";
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 const MaterialComponents = [
   MatButtonModule,
+
   MatIconModule,
+
   MatToolbarModule,
+
   MatMenuModule,
+
   MatDividerModule,
+
   MatTooltipModule,
+
   MatInputModule,
+
   MatFormFieldModule,
+
   MatDatepickerModule,
+
   MatNativeDateModule,
-  MatSelectModule
+
+  MatSelectModule,
+
+  MatListModule,
+
+  MatSidenavModule
 ];
 
 @NgModule({
