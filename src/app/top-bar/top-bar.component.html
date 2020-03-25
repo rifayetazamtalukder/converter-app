@@ -2,88 +2,147 @@
 <!--  -->
 <!--  -->
 
-<mat-toolbar color="primary">
-    <!--  -->
-    <!-- Logo Icon preference: layers, developer_board -->
-    <!--  -->
-    <mat-icon class="svg-logo-icon" matTooltip="Application Logo" svgIcon="developer-board"></mat-icon>
+<!-- Toolbar with sidenav -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [mode]="navMode"
+        [opened]="deviceType==='xl' || deviceType==='lg'">
+        <!--  -->
+        <!-- Side Navigation bar Menu-->
+        <!--  -->
+        <mat-toolbar color="primary">
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <span>
+                <button *ngIf="drawer.opened" type="button" aria-label="Toggle sidenav" mat-icon-button
+                    (click)="drawer.toggle()">
+                    <!--  -->
+                    <!-- Icon Whrn Sidenav is Open -->
+                    <mat-icon svgIcon="close-white" aria-label="Side nav toggle close icon"
+                        matTooltip="Click to close side menu">
+                    </mat-icon>
+                </button>
+            </span>
+        </mat-toolbar>
+        <mat-nav-list>
+            <!--  -->
+            <!-- Menu Links -->
+            <!--  -->
+            <a mat-list-item routerLink="/">Home</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/age">Calculate Age</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/temperature">Teperature</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/length">Length</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/area">Area</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/volume">Volume</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/weight">Weight</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/time">Time</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/about">About</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item routerLink="/help">Help</a>
 
-    <button class="logo" mat-button routerLink="/">Converter</button>
+            <!--  -->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button *ngIf="!drawer.opened" type="button" aria-label="Toggle sidenav" mat-icon-button
+                (click)="drawer.toggle()">
+                <!--  -->
+                <!-- When Sidenav is Open The Close Button is rendered in above <mat-toolbar> -->
+                <!--  -->
+                <!-- Icon When Side nav is Closed -->
+                <mat-icon svgIcon="menu-white" aria-label="Side nav toggle open icon"
+                    matTooltip="Click to open side menu">
+                </mat-icon>
+                <!--  -->
+            </button>
+            <!--  -->
+            <span>
+                <button class="app-name" routerLink="/" mat-flat-button color="primary">
+                    Converter
+                </button>
+            </span>
+            <!--  -->
+            <span class="spacer"></span>
+            <!--  -->
+            <!-- Add Github Link Here -->
+            <!--  -->
+            <!-- This should be at the end of this list -->
+            <button mat-icon-button matTooltip="Click To See Different Options"
+                [matMenuTriggerFor]="top_right_side_menu" aria-label="top Right Side Dotted Menu">
+                <mat-icon svgIcon="more-vert-white"></mat-icon>
+            </button>
+        </mat-toolbar>
+        <!--  -->
+        <!-- Add Content Here -->
+        <!-- Other Pages Will Render Here -->
+        <!--  -->
+        <div style="margin: 16px;">
+            <!--  -->
+            <!-- Any Button Here Will Be Common in All Other Pages -->
+            <!--  -->
+            <button mat-raised-button routerLink="/">Home</button>
+            <button mat-raised-button routerLink="/about">About</button>
+            <button mat-raised-button routerLink="/help">Help</button>
+            <button mat-raised-button routerLink="/error" color="warn">Page Not Found</button>
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!-- Router Outlet: To Show Other Pages -->
+            <router-outlet></router-outlet>
+            <!--  -->
+            <!--  -->
+        </div>
 
-    <!-- This span class will right align other options -->
-    <span class="right-align"></span>
-
-    <span>
-        <button mat-flat-button matTooltip="Calculates Age" routerLink="/age">
-            Calculate Age
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Temperature" routerLink="/temperature">
-            Temperature
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Length" routerLink="/length">
-            Length
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Area" routerLink="/area">
-            Area
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Volume" routerLink="/volume">
-            Volume
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Weight" routerLink="/weight">
-            Weight
-        </button>
-    </span>
-    <span class="ml-12">
-        <button mat-flat-button matTooltip="Converts Time" routerLink="/time">
-            Time
-        </button>
-    </span>
-
-    <!-- This should be at the end -->
-    <button mat-icon-button matTooltip="Click To See Different Options" [matMenuTriggerFor]="top_right_side_menu"
-        aria-label="top Right Side Dotted Menu">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-</mat-toolbar>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
 
+
+<!--  -->
+<!--  -->
+<!-- Right Side Menu Items -->
+<!--  -->
 
 <!-- Material Menu -->
 <mat-menu #top_right_side_menu="matMenu">
     <button mat-menu-item color="primary">
-        <mat-icon>settings</mat-icon>
+        <mat-icon svgIcon="settings-dark-gray"></mat-icon>
         <span>Settings</span>
     </button>
     <!--  -->
     <mat-divider></mat-divider>
     <!--  -->
-    <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Menu Option 1</span>
+    <button mat-menu-item routerLink="/about">
+        <mat-icon svgIcon="announcement-dark-gray"></mat-icon>
+        <span>About</span>
+    </button>
+    <!--  -->
+    <mat-divider></mat-divider>
+    <!--  -->
+    <button mat-menu-item routerLink="/help">
+        <mat-icon svgIcon="help-dark-gray"></mat-icon>
+        <span>Help</span>
     </button>
     <!--  -->
     <mat-divider></mat-divider>
     <!--  -->
     <button mat-menu-item>
-        <mat-icon>voicemail</mat-icon>
-        <span>Menu Option 2</span>
+        <mat-icon style="margin-right: 12px; margin-top: -4px;" svgIcon="person-dark-gray"></mat-icon>
+        <span>
+            <a style="color: rgba(0,0,0,0.87); font-size: 14px; text-decoration: none; font-weight: 400;"
+                href="https://github.com/rifayetazamtalukder" target="_blank">
+                Rifayet Azam Talukder
+            </a>
+        </span>
     </button>
     <!--  -->
-    <mat-divider></mat-divider>
-    <!--  -->
-    <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Menu Option 3</span>
-    </button>
 </mat-menu>
 <!-- End of Material Menu -->
