@@ -2,87 +2,75 @@
 <!--  -->
 <!--  -->
 
-
-<div class="center-shadow-box">
-    <h1>
+<!-- Design For Extra Small(xs: Mobile L, Mobile, M, and Mobile S) -->
+<div class="mat-elevation-z2 mat-elevation-z8 container">
+    <h1 class="header">
         Age Calculator
     </h1>
-    <mat-divider></mat-divider>
     <!--  -->
-    <br><br>
     <!--  -->
-    <form [formGroup]="age_form" (ngSubmit)="onSubmit()">
+    <div style="padding: 16px; border: 2px solid teal; margin:20px 20px;">
+        <a style="text-decoration: none; font-size: 18px; padding: 10px; margin:16px"
+            href="https://www.npmjs.com/package/amazing-time-picker" target="_blank">Amaizing Time Picker</a>
+        <br><br>
+        <a style="text-decoration: none; font-size: 18px; padding: 10px; margin:16px"
+            href="https://owsolutions.github.io/amazing-time-picker#/examples" target="_blank">Amaizing Time Picker
+            Examples</a>
+    </div>
+    <!--  -->
+    <!--  -->
+    <form [formGroup]="age_form" (ngSubmit)="onSubmit()" class="form">
 
         <mat-form-field appearance="fill">
             <mat-label>From Date</mat-label>
-            <input matInput [matDatepicker]="birth_date" placeholder="mm-dd-yyyy" required formControlName="birth_date">
+            <input matInput [matDatepicker]="from_date_dp" required formControlName="from_date">
+            <mat-datepicker-toggle matSuffix [for]="from_date_dp"></mat-datepicker-toggle>
+            <mat-datepicker #from_date_dp></mat-datepicker>
 
-            <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
-
-            <mat-datepicker #birth_date></mat-datepicker>
+            <!-- Mat Errors For Date -->
+            <mat-error *ngIf="from_date.hasError('required')">
+                This field is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="from_date.hasError('matDatepickerParse')">
+                Please Enter a Valid Date. <strong>Ex: March 20, 2020</strong>
+            </mat-error>
         </mat-form-field>
         <!--  -->
-        <span class="ml-16"></span>
         <!--  -->
         <mat-form-field appearance="fill">
             <mat-label>To Date</mat-label>
-            <input matInput [matDatepicker]="current_date" placeholder="mm-dd-yyyy" formControlName="current_date">
+            <input matInput [matDatepicker]="to_date_dp" formControlName="to_date">
+            <mat-datepicker-toggle matSuffix [for]="to_date_dp"></mat-datepicker-toggle>
+            <mat-datepicker #to_date_dp></mat-datepicker>
 
             <mat-hint>
                 <strong>
                     Change Current Date Value To Calculate Custom Age
                 </strong>
             </mat-hint>
-
-            <mat-datepicker-toggle matSuffix [for]="current_date"></mat-datepicker-toggle>
-
-            <mat-datepicker #current_date></mat-datepicker>
-        </mat-form-field>
-
-        <br><br>
-        <!--  -->
-        <!--  -->
-        <!--  -->
-        <mat-form-field appearance="fill">
-            <mat-label>Custom DatePicker</mat-label>
-            <input matInput [matDatepicker]="dp" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-            <mat-datepicker #dp></mat-datepicker>
-
-            <mat-hint>Enter a valid date. Ex: March 20, 2020</mat-hint>
-
             <!-- Mat Errors For Date -->
-            <mat-error *ngIf="date.hasError('required')">
-                This field is <strong>required</strong>
-            </mat-error>
-            <mat-error *ngIf="date.hasError('matDatepickerParse')">
+            <mat-error *ngIf="to_date.hasError('matDatepickerParse')">
                 Please Enter a Valid Date. <strong>Ex: March 20, 2020</strong>
             </mat-error>
-
         </mat-form-field>
         <!--  -->
         <!--  -->
         <!--  -->
-        <!--  -->
-
-        <!--  -->
-        <br><br><br>
-        <!--  -->
-        <button [disabled]="age_form.invalid" type="submit" mat-raised-button color="primary">Calculate</button>
+        <button class="mt-23" type="submit" mat-raised-button color="primary">Calculate</button>
     </form>
 
-    <br><br>
+    <br>
     <div *ngIf="show_age">
-        <div *ngIf="!date_error; else date_error_found" class="age-success">
-            <h2 class="font-success">
-                <pre> {{ age_format }} </pre>
-            </h2>
+        <div class="age-success">
+            <p class="font-success">
+                {{ age_format }}
+            </p>
             <!--  -->
-            <!-- <button (click)="show_details = !show_details" mat-raised-button color="accent">See Details</button> -->
-        </div>
 
-        <ng-template #date_error_found>
-            <pre class="age-error">From Date Must Be Smaller Than To Date</pre>
-        </ng-template>
+            <!--  -->
+            <div style="display: flex; align-items: center; flex-direction: column;">
+                <button (click)="show_details = !show_details" mat-raised-button color="primary">See Details</button>
+            </div>
+        </div>
     </div>
 </div>

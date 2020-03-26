@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    position: relative; 
+    min-height: 100%; 
+}
 
 .center-shadow-box { 
     text-align: center; 
@@ -50,4 +55,66 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: 20px;
 }
 
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* Responsive Design */
+.container {
+    margin: 10px auto;
+    max-width: 400px;
+}
 
+.header {
+    background-color: teal; 
+    padding: 10px; 
+    text-align: center; 
+    color: white;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form > mat-form-field {
+    width: 95%;
+}
+
+.form > mat-form-field:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.mt-23 {
+    margin-top: 23px;
+}
+
+
+/*  */
+
+/* Extra Small Scrren: For Screen width 208px to 320px */
+@media screen and (min-width: 208px) and (max-width: 320px){
+    .container {
+        margin: 10px auto;
+        max-width: 280px;
+    }
+}
+/*  */
+/* Small Screen: For Screen width 320.10px to 375px */
+@media screen and (min-width: 320.10px) and (max-width: 375px){
+    .container {
+        margin: 10px auto;
+        max-width: 330px;
+    }
+}
+/*  */
+/* Small Scren: For Screen width 320.10px to 475px */
+@media screen and (min-width: 375.10px) and (max-width: 425px){
+    .container {
+        margin: 10px auto;
+        max-width: 370px;
+    }
+}

@@ -2,21 +2,14 @@
 /*  */
 /*  */
 
-.age-error {
-    background-color: red; 
-    padding: .5rem; 
-    color: white; 
-    font-size: 2rem;
-}
 
 .age-success {
     background-color: #27ae60;
-    padding: .5rem;
+    padding: 10px;
 }
 
 .font-success {
-    font-size: 1.7rem;
     color: white;
-
+    font-size: 17px;
     text-align: center;
 }
