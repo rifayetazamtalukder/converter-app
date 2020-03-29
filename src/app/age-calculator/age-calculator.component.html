@@ -9,16 +9,6 @@
     </h1>
     <!--  -->
     <!--  -->
-    <div style="padding: 16px; border: 2px solid teal; margin:20px 20px;">
-        <a style="text-decoration: none; font-size: 18px; padding: 10px; margin:16px"
-            href="https://www.npmjs.com/package/amazing-time-picker" target="_blank">Amaizing Time Picker</a>
-        <br><br>
-        <a style="text-decoration: none; font-size: 18px; padding: 10px; margin:16px"
-            href="https://owsolutions.github.io/amazing-time-picker#/examples" target="_blank">Amaizing Time Picker
-            Examples</a>
-    </div>
-    <!--  -->
-    <!--  -->
     <form [formGroup]="age_form" (ngSubmit)="onSubmit()" class="form">
 
         <mat-form-field appearance="fill">
@@ -35,6 +25,86 @@
                 Please Enter a Valid Date. <strong>Ex: March 20, 2020</strong>
             </mat-error>
         </mat-form-field>
+
+        <!--  -->
+        <button mat-raised-button type="button" (click)="showTimeField_from()">
+            {{ from_time_text }} For From Date
+        </button>
+        <br>
+        <!--  -->
+        <div *ngIf="showTimeField"
+            style="display: flex; flex-direction: row; width: inherit; justify-content: center; margin-bottom: 12px; margin-top: 5px;">
+            <!-- Hour -->
+            <mat-form-field appearance="outline" class="time">
+                <mat-label>Hour</mat-label>
+                <input type="number" matInput formControlName="hour" required>
+                <mat-hint>EX: 12 or 09</mat-hint>
+
+                <!-- Errors -->
+                <mat-error *ngIf="hour.hasError('required')">
+                    This Field is <strong>required</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour.hasError('min')">
+                    Minimum value is <strong>1</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour.hasError('max')">
+                    Maximum value is <strong>12</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour.hasError('pattern')">
+                    Please Enter a Valid Hour
+                </mat-error>
+                <!--  -->
+            </mat-form-field>
+            <!--  -->
+            <!-- Minute -->
+            <mat-form-field appearance="outline" class="time ml-5">
+                <mat-label>Minute</mat-label>
+                <input type="text" matInput required formControlName="minute">
+                <mat-hint>
+                    <strong>EX: 24 or 09</strong>
+                </mat-hint>
+
+                <!-- Errors -->
+                <mat-error *ngIf="minute.hasError('required')">
+                    This Field is <strong>required</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute.hasError('min')">
+                    Minimum value is <strong>0</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute.hasError('max')">
+                    Maximum value is <strong>59</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute.hasError('pattern')">
+                    Please Enter a Valid Minute
+                </mat-error>
+            </mat-form-field>
+
+            <strong class="amPm">
+                <pre>{{ amOrpm.value }}</pre>
+            </strong>
+
+            <mat-button-toggle-group (change)="amOrPmValueChange(amOrpm.value)" #amOrpm="matButtonToggleGroup"
+                style="height: 50px; margin-top: 3px; margin-left: 5px;" color="primary">
+                <mat-button-toggle value="am">AM
+                </mat-button-toggle>
+                <mat-button-toggle value="pm">PM
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <!--  -->
+        <!-- AM PM Error -->
+        <div *ngIf="amOrpmValue === '' && minute.touched && hour.touched && minute.dirty && hour.dirty"
+            style="background-color: red; color: white; padding: 5px; margin-bottom: 12px; margin-top: 10px;">
+            <strong>
+                Please Select Am or Pm
+            </strong>
+        </div>
         <!--  -->
         <!--  -->
         <mat-form-field appearance="fill">
@@ -55,21 +125,144 @@
         </mat-form-field>
         <!--  -->
         <!--  -->
+        <button mat-raised-button type="button" (click)="showTimeField_to_func()">
+            {{ to_time_text }} For To Date
+        </button>
+        <br>
+        <!--  -->
+        <div *ngIf="showTimeField_to"
+            style="display: flex; flex-direction: row; width: inherit; justify-content: center; margin-bottom: 12px;">
+            <!-- Hour -->
+            <mat-form-field appearance="outline" class="time">
+                <mat-label>Hour</mat-label>
+                <input type="number" matInput required formControlName="hour_to">
+                <mat-hint>EX: 12 or 09</mat-hint>
+
+                <!-- Errors -->
+                <mat-error *ngIf="hour_to.hasError('required')">
+                    This Field is <strong>required</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour_to.hasError('min')">
+                    Minimum value is <strong>1</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour_to.hasError('max')">
+                    Maximum value is <strong>12</strong>
+                </mat-error>
+
+                <mat-error *ngIf="hour_to.hasError('pattern')">
+                    Please Enter a Valid Hour
+                </mat-error>
+                <!--  -->
+            </mat-form-field>
+            <!--  -->
+            <!-- Minute -->
+            <mat-form-field appearance="outline" class="time ml-5">
+                <mat-label>Minute</mat-label>
+                <input type="text" matInput required formControlName="minute_to">
+                <mat-hint>
+                    <strong>EX: 24 or 09</strong>
+                </mat-hint>
+
+                <!-- Errors -->
+                <mat-error *ngIf="minute_to.hasError('required')">
+                    This Field is <strong>required</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute_to.hasError('min')">
+                    Minimum value is <strong>0</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute_to.hasError('max')">
+                    Maximum value is <strong>59</strong>
+                </mat-error>
+
+                <mat-error *ngIf="minute_to.hasError('pattern')">
+                    Please Enter a Valid Minute
+                </mat-error>
+            </mat-form-field>
+
+            <strong class="amPm">
+                <pre>{{ amOrpm_to.value }}</pre>
+            </strong>
+
+            <mat-button-toggle-group (change)="amOrPm_to_ValueChange(amOrpm_to.value)" #amOrpm_to="matButtonToggleGroup"
+                style="height: 50px; margin-top: 3px; margin-left: 5px;" color="primary">
+                <mat-button-toggle value="am">AM
+                </mat-button-toggle>
+                <mat-button-toggle value="pm">PM
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <!--  -->
+        <!-- AM PM Error -->
+        <div *ngIf="amOrpmValue_to === '' && minute_to.touched && hour_to.touched && minute_to.dirty && hour_to.dirty"
+            style="background-color: red; color: white; padding: 5px; margin-bottom: 12px; margin-top: 10px;">
+            <strong>
+                Please Select Am or Pm
+            </strong>
+        </div>
+        <!--  -->
         <!--  -->
         <button class="mt-23" type="submit" mat-raised-button color="primary">Calculate</button>
     </form>
 
     <br>
     <div *ngIf="show_age">
-        <div class="age-success">
-            <p class="font-success">
+        <div class="result">
+            <h3>
                 {{ age_format }}
-            </p>
+            </h3>
             <!--  -->
 
             <!--  -->
-            <div style="display: flex; align-items: center; flex-direction: column;">
-                <button (click)="show_details = !show_details" mat-raised-button color="primary">See Details</button>
+            <div style="display: flex; align-items: center; flex-direction: column; margin-bottom: 10px;">
+                <button type="button" (click)="ShowDetails_func()" mat-raised-button color="primary">
+                    {{ detail_or_Hide_text }}
+                </button>
+            </div>
+            <!--  -->
+            <!--  -->
+            <div *ngIf="show_details">
+                <mat-list role="list">
+                    <!--  -->
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">
+                        In Month: {{ age_in_months_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Days: {{ age_in_days_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Hours: {{ age_in_hour_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Minutes: {{ age_in_min_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Seconds: {{ age_in_sec_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Mili-Seconds: {{ age_in_milisec_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <!--  -->
+                    <mat-list-item role="listitem">
+                        In Weeks: {{ age_in_weeks_str }}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-list>
             </div>
         </div>
     </div>

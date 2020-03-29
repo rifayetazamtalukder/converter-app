@@ -2,15 +2,13 @@
 <!--  -->
 <!--  -->
 
-<div class="center-shadow-box">
-    <h1>
+<div class="mat-elevation-z2 mat-elevation-z8 container">
+    <h1 class="header">
         Length Converter
     </h1>
-    <mat-divider></mat-divider>
     <!--  -->
-    <br><br>
     <!-- Form Field -->
-    <form [formGroup]="length_form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="length_form" (ngSubmit)="onSubmit()" class="form">
         <!-- From Field -->
         <mat-form-field appearance="outline">
             <mat-label>From</mat-label>
@@ -28,7 +26,6 @@
             </mat-error>
         </mat-form-field>
         <!--  -->
-        <span class="ml-10"></span>
         <!--  -->
         <!-- To Field -->
         <mat-form-field appearance="outline">
@@ -49,9 +46,6 @@
 
         <!--  -->
         <!--  -->
-        <br><br>
-        <!--  -->
-        <!--  -->
         <!-- Value Field -->
         <mat-form-field appearance="fill">
             <mat-label>Value</mat-label>
@@ -64,9 +58,7 @@
             </mat-error>
         </mat-form-field>
         <!--  -->
-        <!--  -->
-        <br><br>
-        <button mat-raised-button type="submit" color="primary">Convert</button>
+        <button mat-raised-button type="submit" color="primary" class="mt-23">Convert</button>
     </form>
 
     <br>

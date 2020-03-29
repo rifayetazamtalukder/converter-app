@@ -24,7 +24,8 @@ import { WeightComponent } from './weight/weight.component';
 import { TimeComponent } from './time/time.component';
 
 
-import { HttpClientModule } from "@angular/common/http"; // for offline material icon
+import { HttpClientModule } from "@angular/common/http";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HttpClientModule } from "@angular/common/http"; // for offline material
     AreaComponent,
     VolumeComponent,
     WeightComponent,
-    TimeComponent
+    TimeComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,6 @@ import { HttpClientModule } from "@angular/common/http"; // for offline material
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

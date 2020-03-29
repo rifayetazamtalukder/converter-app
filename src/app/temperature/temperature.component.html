@@ -2,15 +2,13 @@
 <!--  -->
 <!--  -->
 
-<div class="center-shadow-box">
-    <h1>
+<div class="mat-elevation-z2 mat-elevation-z8 container">
+    <h1 class="header">
         Temperature Converter
     </h1>
-    <mat-divider></mat-divider>
-    <br><br>
-
+    <!--  -->
     <!-- Form Field -->
-    <form [formGroup]="temperature_form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="temperature_form" (ngSubmit)="onSubmit()" class="form">
         <!-- From Unit -->
         <mat-form-field appearance="outline">
             <mat-label>From Unit</mat-label>
@@ -38,11 +36,6 @@
         <!-- {{ unit_from.status | json }} -->
 
         <!--  -->
-        <!--  -->
-        <span class="ml-10"></span>
-        <!--  -->
-        <!--  -->
-
         <!-- To Unit -->
         <mat-form-field appearance="outline">
             <mat-label>To Unit</mat-label>
@@ -66,7 +59,6 @@
             </mat-error>
         </mat-form-field>
 
-        <br><br>
         <!-- From Value -->
         <mat-form-field appearance="fill">
             <mat-label>Value</mat-label>
@@ -80,13 +72,11 @@
         </mat-form-field>
 
         <!--  -->
-        <!--  -->
-        <br><br>
-        <button mat-raised-button type="submit" color="primary">Convert</button>
+        <button class="mt-23" mat-raised-button type="submit" color="primary">Convert</button>
     </form>
 
     <br>
-    <div *ngIf="show_result" class="word-wrap px-10">
+    <div *ngIf="show_result" class="word-wrap" style="margin-bottom: 30px; padding: 5px; text-align: center;">
         <h1>
             <span *ngIf="selected_from != 'kelvin'; else from_kelvin">
                 Result: {{ temp_value.value }}&deg;

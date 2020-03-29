@@ -84,19 +84,21 @@
         <!-- Add Content Here -->
         <!-- Other Pages Will Render Here -->
         <!--  -->
-        <div style="margin: 16px;">
+        <div>
             <!--  -->
             <!-- Any Button Here Will Be Common in All Other Pages -->
             <!--  -->
-            <button mat-raised-button routerLink="/">Home</button>
-            <button mat-raised-button routerLink="/about">About</button>
-            <button mat-raised-button routerLink="/help">Help</button>
-            <button mat-raised-button routerLink="/error" color="warn">Page Not Found</button>
+            <!-- <button mat-raised-button color="primary" routerLink="/">Home</button> -->
             <!--  -->
             <!--  -->
             <!--  -->
             <!-- Router Outlet: To Show Other Pages -->
             <router-outlet></router-outlet>
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!-- Add Footer Here -->
+            <app-footer></app-footer>
             <!--  -->
             <!--  -->
         </div>

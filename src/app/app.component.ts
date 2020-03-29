@@ -65,6 +65,14 @@ export class AppComponent {
     this.iconRegistry.addSvgIcon(
       'person-dark-gray', this.sanitizer.bypassSecurityTrustResourceUrl('../assets/img/svg-icon/person-dark-gray-48dp.svg')
     );
+    // keyboard-left-arrow black icon
+    this.iconRegistry.addSvgIcon(
+      'keyboard-left-arrow-black', this.sanitizer.bypassSecurityTrustResourceUrl('../assets/img/svg-icon/keyboard_arrow_left-48dp.svg')
+    );
+    // keyboard-right-arrow black icon
+    this.iconRegistry.addSvgIcon(
+      'keyboard-right-arrow-black', this.sanitizer.bypassSecurityTrustResourceUrl('../assets/img/svg-icon/keyboard_arrow_right-48dp.svg')
+    );
   }
 }
 

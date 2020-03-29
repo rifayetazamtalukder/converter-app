@@ -19,6 +19,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatSelectModule } from "@angular/material/select";
@@ -26,6 +28,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
 
 import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 const MaterialComponents = [
@@ -47,13 +53,19 @@ const MaterialComponents = [
 
   MatDatepickerModule,
 
+  MatMomentDateModule,
+
   MatNativeDateModule,
 
   MatSelectModule,
 
   MatListModule,
 
-  MatSidenavModule
+  MatSidenavModule,
+
+  MatButtonToggleModule,
+
+  MatSnackBarModule
 ];
 
 @NgModule({
