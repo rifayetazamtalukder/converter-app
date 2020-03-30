@@ -225,6 +225,7 @@
             <!--  -->
             <!--  -->
             <div *ngIf="show_details">
+                <!--  -->
                 <mat-list role="list">
                     <!--  -->
                     <mat-divider></mat-divider>
@@ -263,6 +264,25 @@
                     </mat-list-item>
                     <mat-divider></mat-divider>
                 </mat-list>
+                <!--  -->
+                <!--  -->
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Total Breath:
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{ total_breath.toLocaleString() }}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <!--  -->
+                        <!-- Expansion Panel Body -->
+                        <p>Add Breath in Min, Hour, Sec etc. Here</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!--  -->
+                <!--  -->
             </div>
         </div>
     </div>

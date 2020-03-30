@@ -33,6 +33,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { MatExpansionModule } from "@angular/material/expansion";
+
 
 const MaterialComponents = [
   MatButtonModule,
@@ -65,7 +67,9 @@ const MaterialComponents = [
 
   MatButtonToggleModule,
 
-  MatSnackBarModule
+  MatSnackBarModule,
+
+  MatExpansionModule
 ];
 
 @NgModule({
